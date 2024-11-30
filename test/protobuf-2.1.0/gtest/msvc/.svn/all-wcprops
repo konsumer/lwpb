@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/gtest/msvc
+END
+gtest_uninitialized_test_.vcproj
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/gtest/msvc/gtest_uninitialized_test_.vcproj
+END
+gtest.sln
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/gtest/msvc/gtest.sln
+END
+gtest_color_test_.vcproj
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/gtest/msvc/gtest_color_test_.vcproj
+END
+gtest_output_test_.vcproj
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/gtest/msvc/gtest_output_test_.vcproj
+END
+gtest_env_var_test_.vcproj
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/gtest/msvc/gtest_env_var_test_.vcproj
+END
+gtest_unittest.vcproj
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/gtest/msvc/gtest_unittest.vcproj
+END
+gtest.vcproj
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/gtest/msvc/gtest.vcproj
+END
+gtest_prod_test.vcproj
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/gtest/msvc/gtest_prod_test.vcproj
+END
+gtest_environment_test.vcproj
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/gtest/msvc/gtest_environment_test.vcproj
+END
+gtest_main.vcproj
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/gtest/msvc/gtest_main.vcproj
+END

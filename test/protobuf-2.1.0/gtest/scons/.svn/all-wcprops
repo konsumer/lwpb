@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/gtest/scons
+END
+SConscript
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/gtest/scons/SConscript
+END

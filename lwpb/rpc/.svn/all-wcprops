@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/98/trunk/src/lwpb/rpc
+END
+transport.c
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/98/trunk/src/lwpb/rpc/transport.c
+END
+socket_protocol_pb2.c
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/76/trunk/src/lwpb/rpc/socket_protocol_pb2.c
+END
+socket_helper.h
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/98/trunk/src/lwpb/rpc/socket_helper.h
+END
+client.c
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/98/trunk/src/lwpb/rpc/client.c
+END
+socket_server.c
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/98/trunk/src/lwpb/rpc/socket_server.c
+END
+socket_protocol_pb2.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/76/trunk/src/lwpb/rpc/socket_protocol_pb2.h
+END
+server.c
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/98/trunk/src/lwpb/rpc/server.c
+END
+socket_client.c
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/98/trunk/src/lwpb/rpc/socket_client.c
+END
+socket_helper.c
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/98/trunk/src/lwpb/rpc/socket_helper.c
+END
+direct.c
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/98/trunk/src/lwpb/rpc/direct.c
+END
+socket_protocol.proto
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/98/trunk/src/lwpb/rpc/socket_protocol.proto
+END

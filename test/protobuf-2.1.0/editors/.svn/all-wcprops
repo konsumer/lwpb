@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/editors
+END
+README.txt
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/editors/README.txt
+END
+proto.vim
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/editors/proto.vim
+END
+protobuf-mode.el
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/editors/protobuf-mode.el
+END

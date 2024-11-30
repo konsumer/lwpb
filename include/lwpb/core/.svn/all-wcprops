@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/108/trunk/src/include/lwpb/core
+END
+types.h
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/106/trunk/src/include/lwpb/core/types.h
+END
+decoder.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/108/trunk/src/include/lwpb/core/decoder.h
+END
+debug.h
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/98/trunk/src/include/lwpb/core/debug.h
+END
+misc.h
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/98/trunk/src/include/lwpb/core/misc.h
+END
+arch.h
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/98/trunk/src/include/lwpb/core/arch.h
+END
+encoder.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/107/trunk/src/include/lwpb/core/encoder.h
+END

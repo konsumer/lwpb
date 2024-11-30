@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/gtest/scripts
+END
+gtest-config.in
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/gtest/scripts/gtest-config.in
+END
+gen_gtest_pred_impl.py
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/gtest/scripts/gen_gtest_pred_impl.py
+END
+fuse_gtest_files.py
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/gtest/scripts/fuse_gtest_files.py
+END

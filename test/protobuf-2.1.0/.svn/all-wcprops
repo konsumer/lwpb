@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/93/trunk/protobuf-2.1.0
+END
+config.h.in
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/4/trunk/protobuf-2.1.0/config.h.in
+END
+configure.ac
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/configure.ac
+END
+missing
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/missing
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/Makefile.am
+END
+README.txt
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/README.txt
+END
+autogen.sh
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/autogen.sh
+END
+CONTRIBUTORS.txt
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/CONTRIBUTORS.txt
+END
+aclocal.m4
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/6/trunk/protobuf-2.1.0/aclocal.m4
+END
+install-sh
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/install-sh
+END
+configure
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/4/trunk/protobuf-2.1.0/configure
+END
+Makefile.in
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/4/trunk/protobuf-2.1.0/Makefile.in
+END
+generate_descriptor_proto.sh
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/generate_descriptor_proto.sh
+END
+INSTALL.txt
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/INSTALL.txt
+END
+COPYING.txt
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/COPYING.txt
+END
+CHANGES.txt
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/CHANGES.txt
+END
+depcomp
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/depcomp
+END
+config.guess
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/config.guess
+END
+config.sub
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/config.sub
+END
+ltmain.sh
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/4/trunk/protobuf-2.1.0/ltmain.sh
+END

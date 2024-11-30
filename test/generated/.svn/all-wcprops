@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/103/trunk/src/test/generated
+END
+test_full_vectors.inc
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/103/trunk/src/test/generated/test_full_vectors.inc
+END
+test_simple_pb2.h
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/48/trunk/src/test/generated/test_simple_pb2.h
+END
+test_struct_map_pb2.c
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/82/trunk/src/test/generated/test_struct_map_pb2.c
+END
+test_full_pb2.c
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/103/trunk/src/test/generated/test_full_pb2.c
+END
+test_full.pb.cc
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/103/trunk/src/test/generated/test_full.pb.cc
+END
+test_full.pb.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/103/trunk/src/test/generated/test_full.pb.h
+END
+test_rpc_pb2.c
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/96/trunk/src/test/generated/test_rpc_pb2.c
+END
+test_struct_map_pb2.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/82/trunk/src/test/generated/test_struct_map_pb2.h
+END
+test_full_pb2.h
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/103/trunk/src/test/generated/test_full_pb2.h
+END
+test_rpc_pb2.h
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/66/trunk/src/test/generated/test_rpc_pb2.h
+END
+test_simple_pb2.c
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/96/trunk/src/test/generated/test_simple_pb2.c
+END

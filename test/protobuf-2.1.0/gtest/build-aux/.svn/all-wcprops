@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/4/trunk/protobuf-2.1.0/gtest/build-aux
+END
+ltmain.sh
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/4/trunk/protobuf-2.1.0/gtest/build-aux/ltmain.sh
+END
+config.sub
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/gtest/build-aux/config.sub
+END
+install-sh
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/gtest/build-aux/install-sh
+END
+config.h.in
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/4/trunk/protobuf-2.1.0/gtest/build-aux/config.h.in
+END
+depcomp
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/gtest/build-aux/depcomp
+END
+missing
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/gtest/build-aux/missing
+END
+config.guess
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/gtest/build-aux/config.guess
+END

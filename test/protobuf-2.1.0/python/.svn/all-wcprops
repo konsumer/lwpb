@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/python
+END
+ez_setup.py
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/python/ez_setup.py
+END
+setup.py
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/python/setup.py
+END
+mox.py
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/python/mox.py
+END
+README.txt
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/python/README.txt
+END
+stubout.py
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/3/trunk/protobuf-2.1.0/python/stubout.py
+END
