@@ -87,13 +87,20 @@ void encode_example(void) {
 The following example will decode a simple message of the type 'TestMessage':
 
 ```c
-// Structure to decode into struct TestMessage { int32 count; struct { int32 result; char msg[32]; } info; }
+// Structure to decode into
+struct TestMessage {
+  int32 count;
+  struct {
+    int32 result;
+    char msg[32];
+  } info;
+}
 
 // We don't use the message start handler
-void msg_start_handler(struct lwpb_decoder *decoder, const struct lwpb_msg_desc *msg_desc, void *arg) {  }
+void msg_start_handler(struct lwpb_decoder *decoder, const struct lwpb_msg_desc *msg_desc, void *arg) {}
 
 // We don't use the message end handler
-void msg_end_handler(struct lwpb_decoder *decoder, const struct lwpb_msg_desc *msg_desc, void *arg) {  }
+void msg_end_handler(struct lwpb_decoder *decoder, const struct lwpb_msg_desc *msg_desc, void *arg) {}
 
 void field_handler(struct lwpb_decoder *decoder, const struct lwpb_msg_desc *msg_desc, const struct lwpb_field_desc *field_desc, union lwpb_value *value, void *arg) {struct TestMessage *msg = arg;
   // Copy fields into local structure
@@ -114,7 +121,8 @@ void field_handler(struct lwpb_decoder *decoder, const struct lwpb_msg_desc *msg
 void decode_example(void) {
   struct lwpb_decoder decoder;
   unsigned char buf[128];
-  size_t len; struct TestMessage msg;
+  size_t len;
+  struct TestMessage msg;
 
   // Initialize the decoder
   lwpb_decoder_init(&decoder);
