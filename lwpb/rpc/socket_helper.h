@@ -21,6 +21,8 @@
 #define __LWPB_RPC_SOCKET_HELPER_H__
 
 #include <lwpb/lwpb.h>
+#include <sys/socket.h>
+
 
 
 typedef enum {

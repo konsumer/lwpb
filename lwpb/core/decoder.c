@@ -151,7 +151,7 @@ static void debug_field_handler(struct lwpb_decoder *decoder,
  * @return Returns LWPB_ERR_OK if successful or LWPB_ERR_END_OF_BUF if there
  * were not enough bytes in the memory buffer. 
  */
-static lwpb_err_t decode_varint(struct lwpb_buf *buf, u64_t *varint)
+lwpb_err_t lwpb_decode_varint(struct lwpb_buf *buf, u64_t *varint)
 {
     int bitpos;
     
@@ -174,7 +174,7 @@ static lwpb_err_t decode_varint(struct lwpb_buf *buf, u64_t *varint)
  * @return Returns LWPB_ERR_OK if successful or LWPB_ERR_END_OF_BUF if there
  * were not enough bytes in the memory buffer. 
  */
-static lwpb_err_t decode_32bit(struct lwpb_buf *buf, u32_t *value)
+lwpb_err_t lwpb_decode_32bit(struct lwpb_buf *buf, u32_t *value)
 {
     if (lwpb_buf_left(buf) < 4)
         return LWPB_ERR_END_OF_BUF;
@@ -193,7 +193,7 @@ static lwpb_err_t decode_32bit(struct lwpb_buf *buf, u32_t *value)
  * @return Returns LWPB_ERR_OK if successful or LWPB_ERR_END_OF_BUF if there
  * were not enough bytes in the memory buffer. 
  */
-static lwpb_err_t decode_64bit(struct lwpb_buf *buf, u64_t *value)
+lwpb_err_t lwpb_decode_64bit(struct lwpb_buf *buf, u64_t *value)
 {
     int i;
     
@@ -335,10 +335,10 @@ lwpb_err_t lwpb_decoder_decode(struct lwpb_decoder *decoder,
     union wire_value wire_value;
     union lwpb_value value;
     struct lwpb_decoder_stack_frame *frame, *new_frame;
-    int packed = 0;
     
     // Setup initial stack frame
     decoder->depth = 1;
+    decoder->packed = 0;
     frame = &decoder->stack[decoder->depth - 1];
     lwpb_buf_init(&frame->buf, data, len);
     frame->msg_desc = msg_desc;
@@ -357,11 +357,11 @@ decode_nested:
         // Process buffer
         while (lwpb_buf_left(&frame->buf) > 0) {
             
-            if (packed) {
+            if (decoder->packed) {
                 wire_type = field_wire_type(field_desc);
             } else {
                 // Decode the field key
-                ret = decode_varint(&frame->buf, &key);
+                ret = lwpb_decode_varint(&frame->buf, &key);
                 if (ret != LWPB_ERR_OK)
                     return ret;
             
@@ -379,17 +379,17 @@ decode_nested:
             // Decode field's wire value
             switch(wire_type) {
             case WT_VARINT:
-                ret = decode_varint(&frame->buf, &wire_value.varint);
+                ret = lwpb_decode_varint(&frame->buf, &wire_value.varint);
                 if (ret != LWPB_ERR_OK)
                     return ret;
                 break;
             case WT_64BIT:
-                ret = decode_64bit(&frame->buf, &wire_value.int64);
+                ret = lwpb_decode_64bit(&frame->buf, &wire_value.int64);
                 if (ret != LWPB_ERR_OK)
                     return ret;
                 break;
             case WT_STRING:
-                ret = decode_varint(&frame->buf, &wire_value.string.len);
+                ret = lwpb_decode_varint(&frame->buf, &wire_value.string.len);
                 if (ret != LWPB_ERR_OK)
                     return ret;
                 if (wire_value.string.len > lwpb_buf_left(&frame->buf))
@@ -398,7 +398,7 @@ decode_nested:
                 frame->buf.pos += wire_value.string.len;
                 break;
             case WT_32BIT:
-                ret = decode_32bit(&frame->buf, &wire_value.int32);
+                ret = lwpb_decode_32bit(&frame->buf, &wire_value.int32);
                 if (ret != LWPB_ERR_OK)
                     return ret;
                 break;
@@ -421,7 +421,7 @@ decode_nested:
                 new_frame->msg_desc = frame->msg_desc;
                 
                 // Enter packed repeated mode
-                packed = 1;
+                decoder->packed = 1;
                 
                 goto decode_nested;
             }
@@ -505,7 +505,7 @@ decode_nested:
         decoder->depth--;
         
         // Leave packed repeated mode
-        packed = 0;
+        decoder->packed = 0;
     }
     
     if (used)

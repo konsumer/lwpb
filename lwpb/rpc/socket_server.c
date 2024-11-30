@@ -23,8 +23,11 @@
 
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <netinet/in.h>
 #include <netdb.h>
 #include <fcntl.h>
+#include <unistd.h>
+#include <arpa/inet.h>
 
 #include <lwpb/lwpb.h>
 #include <lwpb/rpc/socket_server.h>
@@ -131,17 +134,17 @@ static void handle_connection(struct lwpb_transport_socket_server *socket_server
     conn->pos += len;
     used = conn->pos - conn->buf;
     
-    LWPB_DEBUG("Client(%d) received %d bytes", conn->index, len);
+    LWPB_DEBUG("Client(%d) received %d bytes", conn->index, (int) len);
     
     // Try to decode the request
-    ret = parse_request(conn->buf, used, &info, socket_server->server->service_list);
+    ret = (lwpb_err_t)parse_request(conn->buf, used, &info, socket_server->server->service_list);
     if (ret != PARSE_ERR_OK)
         return;
     
     LWPB_DEBUG("Client(%d) received request header", conn->index);
     LWPB_DEBUG("type = %d, service = %p, method = %p, header_len = %d, msg_len = %d",
                info.msg_type, info.service_desc, info.method_desc,
-               info.header_len, info.msg_len);
+               (int)info.header_len, (int) info.msg_len);
     
     if (!info.service_desc) {
         // TODO unknown service
@@ -418,7 +421,6 @@ void lwpb_transport_socket_server_close(lwpb_transport_t transport)
         
     // Close listen socket
     close(socket_server->socket);
-    socket_server->socket == -1;
 }
 
 /**
@@ -436,7 +438,7 @@ lwpb_err_t lwpb_transport_socket_server_update(lwpb_transport_t transport)
     int high;
     
     if (socket_server->socket == -1)
-        return;
+        return LWPB_ERR_CANCEL;
     
     timeout.tv_sec = 1;
     timeout.tv_usec = 0;

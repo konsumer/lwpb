@@ -23,8 +23,11 @@
 
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <netinet/in.h>
 #include <netdb.h>
 #include <fcntl.h>
+#include <unistd.h>
+#include <arpa/inet.h>
 
 #include <lwpb/lwpb.h>
 #include <lwpb/rpc/socket_client.h>
@@ -338,7 +341,7 @@ lwpb_err_t lwpb_transport_socket_client_update(lwpb_transport_t transport)
     int high;
     
     if (socket_client->socket == -1)
-        return;
+        return LWPB_ERR_END_OF_BUF;
     
     timeout.tv_sec = 1;
     timeout.tv_usec = 0;

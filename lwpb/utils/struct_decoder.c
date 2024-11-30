@@ -19,6 +19,8 @@
 
 #include <lwpb/lwpb.h>
 
+#include "private.h"
+
 
 static const struct lwpb_struct_map_field *find_map_field(
         const struct lwpb_struct_map *map,
@@ -29,7 +31,6 @@ static const struct lwpb_struct_map_field *find_map_field(
     for (field = map->fields; field->field_desc; field++)
         if (field->field_desc == field_desc)
             return field;
-    return NULL;
 }
 
 #define FIELD_BASE(_field_, _base_, _index_) \
@@ -48,6 +49,8 @@ static void unpack_field(struct lwpb_struct_decoder *sdecoder,
     if (field != frame->last_field)
         frame->field_index = 0;
     frame->last_field = field;
+    
+    if (field->count >= field->count)
 
     switch (field->field_desc->opts.typ) {
     case LWPB_DOUBLE:

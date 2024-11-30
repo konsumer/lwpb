@@ -2,8 +2,6 @@ lwpb - Lightweight Protocol Buffers
 
 A lightweight implementation of the Google Protocol Buffers for C, with a simple streaming interface for encoding and decoding. The library is designed to be used for embedded devices.
 
-This is some modern cmake tooling wrapped around [the original](https://code.google.com/archive/p/lwpb/).
-
 ## Introduction
 
 lwpb (short for lightweight protocol buffers) is an implementation of Google's protocol buffers (in short protobuf) in C for systems with limited resources.
@@ -14,9 +12,9 @@ http://code.google.com/p/protobuf/
 
 ## Forks
 
-I stopped development work on lwpb quite some time ago, but the project has been cloned and further improved and is available on https://github.com/acg/lwpb
-
-Also, another interesting implementation of lightweight protocol buffers for C is available on https://github.com/haberman/upb, but note that this project is completely independent of lwpb.
+- [the original](https://code.google.com/archive/p/lwpb/)
+- [C /python-bindings](https://github.com/acg/lwpb)
+- [interesting but completely seperate project](https://github.com/haberman/upb)
 
 ## Design
 
