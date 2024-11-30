@@ -51,35 +51,9 @@ message TestMessage {
 The following example will encode a simple message of the type `TestMessage`:
 
 ```c
-void encode_example(void) {
-  struct lwpb_encoder encoder; unsigned char buf[128]; size_t len;
+#include <lwpb/lwpb.h>
 
-  // Initialize the encoder
-  lwpb_encoder_init(&encoder);
 
-  // Start encoding a message of type 'test.TestMessage' into buf
-  lwpb_encoder_start(&encoder, test_TestMessage, buf, sizeof(buf));
-
-  // Encode a 55 to the field 'count'
-  lwpb_encoder_add_int32(&encoder, test_TestMessage_count, 55);
-
-  // Start encoding the nested message of type 'test.Info' in field 'info'
-  lwpb_encoder_nested_start(&encoder, test_TestMessage_info);
-
-  // Encode a -1 to the field 'result'
-  lwpb_encoder_add_int32(&encoder, test_Info_result, -1);
-
-  // Encode a "Unknown" to the field 'msg'
-  lwpb_encoder_add_string(&encoder, test_Info_msg, "Unknown");
-
-  // Finish encoding the nested message of type 'test.Info'
-  lwpb_encoder_nested_end(&encoder);
-
-  // Finish encoding the message of type 'test.TestMessage'
-  len = lwpb_encoder_finish(&encoder);
-
-  // buf now holds the encoded message which is len bytes long
-}
 ```
 
 ### Decoder
@@ -87,6 +61,8 @@ void encode_example(void) {
 The following example will decode a simple message of the type 'TestMessage':
 
 ```c
+#include <lwpb/lwpb.h>
+
 // Structure to decode into
 struct TestMessage {
   int32 count;
