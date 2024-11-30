@@ -53,7 +53,52 @@ The following example will encode a simple message of the type `TestMessage`:
 ```c
 #include <lwpb/lwpb.h>
 
+// TODO: fill this in
+const struct lwpb_field_desc test_TestMessage[] = {
+  {
+    .number = 1,
+    .opts.label = LWPB_REQUIRED,
+    .opts.typ = LWPB_INT32,
+    .name="count",
+  },
+  {
+    .number = 2,
+    .opts.label = LWPB_REQUIRED,
+    .opts.typ = LWPB_MESSAGE,
+    .msg_desc = test_PhoneNumber,
+    .name="info",
+  },
+}
 
+void encode_example(void) {
+  struct lwpb_encoder encoder; unsigned char buf[128]; size_t len;
+
+  // Initialize the encoder
+  lwpb_encoder_init(&encoder);
+
+  // Start encoding a message of type 'test.TestMessage' into buf
+  lwpb_encoder_start(&encoder, test_TestMessage, buf, sizeof(buf));
+
+  // Encode a 55 to the field 'count'
+  lwpb_encoder_add_int32(&encoder, test_TestMessage, 55);
+
+  // Start encoding the nested message of type 'test.Info' in field 'info'
+  lwpb_encoder_nested_start(&encoder, test_TestMessage_info);
+
+  // Encode a -1 to the field 'result'
+  lwpb_encoder_add_int32(&encoder, test_Info_result, -1);
+
+  // Encode a "Unknown" to the field 'msg'
+  lwpb_encoder_add_string(&encoder, test_Info_msg, "Unknown");
+
+  // Finish encoding the nested message of type 'test.Info'
+  lwpb_encoder_nested_end(&encoder);
+
+  // Finish encoding the message of type 'test.TestMessage'
+  len = lwpb_encoder_finish(&encoder);
+
+  // buf now holds the encoded message which is len bytes long
+}
 ```
 
 ### Decoder
