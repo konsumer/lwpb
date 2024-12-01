@@ -1,15 +1,15 @@
 /** @file struct_decoder.c
- * 
+ *
  * Implementation of the protocol buffers struct decoder.
- * 
+ *
  * Copyright 2009 Simon Kallweit
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
- *     
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -19,15 +19,13 @@
 
 #include <lwpb/lwpb.h>
 
-#include "private.h"
-
 
 static const struct lwpb_struct_map_field *find_map_field(
         const struct lwpb_struct_map *map,
         const struct lwpb_field_desc *field_desc)
 {
     const struct lwpb_struct_map_field *field;
-    
+
     for (field = map->fields; field->field_desc; field++)
         if (field->field_desc == field_desc)
             return field;
@@ -42,14 +40,14 @@ static void unpack_field(struct lwpb_struct_decoder *sdecoder,
 {
     size_t len;
     struct lwpb_struct_decoder_stack_frame *frame;
-    
+
     frame = &sdecoder->stack[sdecoder->depth];
-    
+
     // Reset field index if a new field is encountered
     if (field != frame->last_field)
         frame->field_index = 0;
     frame->last_field = field;
-    
+
     if (field->count >= field->count)
 
     switch (field->field_desc->opts.typ) {
@@ -114,7 +112,7 @@ static void unpack_field(struct lwpb_struct_decoder *sdecoder,
         LWPB_DIAG_PRINTF("submessage\n");
         break;
     }
-    
+
 }
 
 static void sdecoder_msg_start_handler(struct lwpb_decoder *decoder,
@@ -128,7 +126,7 @@ static void sdecoder_msg_start_handler(struct lwpb_decoder *decoder,
 
     sdecoder->depth++;
     frame = &sdecoder->stack[sdecoder->depth];
-    
+
     if (sdecoder->depth > 0) {
         last_frame = &sdecoder->stack[sdecoder->depth - 1];
         frame->map = (const struct lwpb_struct_map *) last_frame->last_field->len;
@@ -138,9 +136,9 @@ static void sdecoder_msg_start_handler(struct lwpb_decoder *decoder,
         frame->field_index = 0;
         last_frame->field_index++;
     }
-    
+
     LWPB_ASSERT(frame->map->msg_desc == msg_desc, "Message type mismatch");
-    
+
     if (sdecoder->msg_start_handler)
         sdecoder->msg_start_handler(sdecoder, msg_desc, sdecoder->arg);
 }
@@ -151,9 +149,9 @@ static void sdecoder_msg_end_handler(struct lwpb_decoder *decoder,
 {
     struct lwpb_struct_decoder *sdecoder = arg;
     struct lwpb_struct_decoder_stack_frame *frame;
-    
+
     LWPB_DIAG_PRINTF("msg end\n");
-    
+
     sdecoder->depth--;
     frame = &sdecoder->stack[sdecoder->depth];
 
@@ -169,7 +167,7 @@ static void sdecoder_field_handler(struct lwpb_decoder *decoder,
     struct lwpb_struct_decoder *sdecoder = arg;
     struct lwpb_struct_decoder_stack_frame *frame = &sdecoder->stack[sdecoder->depth];
     const struct lwpb_struct_map_field *field;
-    
+
     field = find_map_field(frame->map, field_desc);
     if (field)
         unpack_field(sdecoder, field, value);
@@ -191,11 +189,11 @@ void lwpb_struct_decoder_init(struct lwpb_struct_decoder *sdecoder)
     // Initialize decoder
     lwpb_decoder_init(&sdecoder->decoder);
     lwpb_decoder_arg(&sdecoder->decoder, sdecoder);
-    lwpb_decoder_msg_handler(&sdecoder->decoder, 
+    lwpb_decoder_msg_handler(&sdecoder->decoder,
             sdecoder_msg_start_handler, sdecoder_msg_end_handler);
     lwpb_decoder_field_handler(&sdecoder->decoder,
             sdecoder_field_handler);
-    
+
     // Initialize internals
     sdecoder->arg = NULL;
     sdecoder->msg_start_handler = NULL;
@@ -258,6 +256,6 @@ lwpb_err_t lwpb_struct_decoder_decode(struct lwpb_struct_decoder *sdecoder,
     sdecoder->stack[0].base = struct_base;
     sdecoder->stack[0].last_field = NULL;
     sdecoder->stack[0].field_index = 0;
-    
+
     return lwpb_decoder_decode(&sdecoder->decoder, struct_map->msg_desc, data, len, used);
 }

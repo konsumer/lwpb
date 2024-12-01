@@ -180,3 +180,17 @@ Then you can link to it, like this:
 add_executable(yourthing yourthing.c)
 target_link_libraries(yourthing lwpb)
 ```
+
+## local manual build
+
+```
+# configure native
+cmake -B build
+
+# build
+cmake --build build
+
+# configure for web
+emcmake cmake -B wbuild
+cmake --build wbuild
+```

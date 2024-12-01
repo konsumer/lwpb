@@ -1,15 +1,15 @@
 /** @file socket_helper.c
- * 
+ *
  * Helper functions for the socket RPC protocol.
- * 
+ *
  * Copyright 2009 Simon Kallweit
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
- *     
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -23,6 +23,7 @@
 
 #include "socket_helper.h"
 #include "socket_protocol_pb2.h"
+#include <arpa/inet.h>
 
 
 #define PROTOCOL_MAGIC 0xdeadbeaf
@@ -41,14 +42,14 @@ int send_request(int socket, const struct lwpb_method_desc *method_desc,
     struct pre_header pre_header;
     u8_t header[128];
     size_t len;
-    
+
     lwpb_encoder_init(&encoder);
     lwpb_encoder_start(&encoder, socket_protocol_Header, header, sizeof(header));
     lwpb_encoder_add_enum(&encoder, socket_protocol_Header_type, SOCKET_PROTOCOL_REQUEST);
     lwpb_encoder_add_string(&encoder, socket_protocol_Header_service, (char *) method_desc->service->name);
     lwpb_encoder_add_string(&encoder, socket_protocol_Header_method, (char *) method_desc->name);
     len = lwpb_encoder_finish(&encoder);
-    
+
     pre_header.magic = htonl(PROTOCOL_MAGIC);
     pre_header.header_len = htonl(len);
     pre_header.msg_len = htonl(req_len);
@@ -65,12 +66,12 @@ int send_response(int socket, const struct lwpb_method_desc *method_desc,
     struct pre_header pre_header;
     u8_t header[128];
     size_t len;
-    
+
     lwpb_encoder_init(&encoder);
     lwpb_encoder_start(&encoder, socket_protocol_Header, header, sizeof(header));
     lwpb_encoder_add_enum(&encoder, socket_protocol_Header_type, SOCKET_PROTOCOL_RESPONSE);
     len = lwpb_encoder_finish(&encoder);
-    
+
     pre_header.magic = htonl(PROTOCOL_MAGIC);
     pre_header.header_len = htonl(len);
     pre_header.msg_len = htonl(res_len);
@@ -87,13 +88,13 @@ static void parse_request_field_handler(struct lwpb_decoder *decoder,
 {
     struct protocol_header_info *header_info = arg;
     int i;
-    
+
     if (msg_desc != socket_protocol_Header)
         return;
 
     if (field_desc == socket_protocol_Header_type)
         header_info->msg_type = value->enum_;
-    
+
     if (field_desc == socket_protocol_Header_service && header_info->_service_list) {
         // Try to identify the service from the services list
         const struct lwpb_service_desc **service;
@@ -106,7 +107,7 @@ static void parse_request_field_handler(struct lwpb_decoder *decoder,
             }
         }
     }
-    
+
     if (field_desc == socket_protocol_Header_method && header_info->_service_list) {
         if (header_info->service_desc) {
             // Try to identify the method
@@ -130,10 +131,10 @@ protocol_parse_err_t parse_request(void *buf, size_t len,
     struct lwpb_decoder decoder;
     struct pre_header *pre_header;
     u32_t header_len;
-    
+
     if (len < sizeof(struct pre_header))
         return PARSE_ERR_END_OF_BUF;
-    
+
     pre_header = buf;
 
     // Check magic
@@ -146,15 +147,15 @@ protocol_parse_err_t parse_request(void *buf, size_t len,
     info->msg_len = ntohl(pre_header->msg_len);
     if (len < info->header_len + info->msg_len)
         return PARSE_ERR_END_OF_BUF;
-    
+
     // Decode header
     buf += sizeof(struct pre_header);
-    
+
     info->_service_list = service_list;
     info->msg_type = 0;
     info->service_desc = NULL;
     info->method_desc = NULL;
-    
+
     lwpb_decoder_init(&decoder);
     lwpb_decoder_arg(&decoder, info);
     lwpb_decoder_field_handler(&decoder, parse_request_field_handler);
